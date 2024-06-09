@@ -11,6 +11,7 @@ function EditPage() {
 
   const navigate = useNavigate();
 
+
   const { id } = useParams();
 
   const getFetch = () => {

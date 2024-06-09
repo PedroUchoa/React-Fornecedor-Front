@@ -21,3 +21,16 @@
   list-style: none;
   padding: 20px;
 }
+
+section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+section button{
+  background-color: transparent ;
+  border: none;
+  cursor: pointer;
+}
