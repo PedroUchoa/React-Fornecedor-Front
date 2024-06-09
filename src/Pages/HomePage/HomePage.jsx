@@ -11,9 +11,7 @@ export default function HomePage() {
     fetch("http://localhost:8080/api/fornecedor/all")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         setFornecedores(data);
-        console.log(data)
       })
       .catch((err) => console.log(err));
   };
