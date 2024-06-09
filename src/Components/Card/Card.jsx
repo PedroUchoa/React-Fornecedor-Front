@@ -1,11 +1,16 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
-import phoneImg from '../../Assets/phone.svg'
-import './Card.css'
+import React from "react";
+import phoneImg from "../../Assets/phone.svg";
+import "./Card.css";
 import emailImg from "../../Assets/email.svg";
+import { useNavigate } from "react-router-dom";
 
+export default function Card({ fornecedor, onButtonClick }) {
+  const handleClick = () => {
+    onButtonClick(fornecedor.id);
+  };
 
-export default function Card({fornecedor}) {
+  const navigate = useNavigate();
 
 
   return (
@@ -22,12 +27,9 @@ export default function Card({fornecedor}) {
         </div>
       </div>
       <div className="buttons-container">
-        <button>Editar</button>
-        <button>Excluir</button>
+        <button onClick={() => navigate(`/edit/${fornecedor.id}`)}>Editar</button>
+        <button onClick={handleClick}>Excluir</button>
       </div>
     </li>
   );
 }
-
-
-

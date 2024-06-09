@@ -7,17 +7,25 @@ import Head from "../../Components/Header/Head";
 export default function HomePage() {
   const [fornecedores, setFornecedores] = useState([]);
 
-  const fetchFact = () => {
+  const fetchGet = () => {
     fetch("http://localhost:8080/api/fornecedor/all")
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         setFornecedores(data);
+        console.log(data)
       })
       .catch((err) => console.log(err));
   };
 
+  const fetchDelete = (id) => {
+    fetch("http://localhost:8080/api/fornecedor/delete/" + id,{ method: "DELETE",});
+     setFornecedores(fornecedores.filter((fornecedor) => fornecedor.id !== id));
+  
+  };
+
   useEffect(() => {
-    fetchFact();
+    fetchGet();
   }, []);
 
   return (
@@ -25,7 +33,11 @@ export default function HomePage() {
       <Head />
       <ul>
         {fornecedores.map((fornecedor) => (
-          <Card key={fornecedor.id} fornecedor={fornecedor} />
+          <Card
+            onButtonClick={fetchDelete}
+            key={fornecedor.id}
+            fornecedor={fornecedor}
+          />
         ))}
       </ul>
     </div>
